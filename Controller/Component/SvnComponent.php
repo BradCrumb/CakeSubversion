@@ -62,4 +62,12 @@ class SvnComponent extends Component {
 	public function cat($filePath, $revision = SVN_REVISION_HEAD) {
 		return @svn_cat($this->fullRepoPath($filePath), $revision);
 	}
+
+	public function ls($repo, $revision = SVN_REVISION_HEAD) {
+		return @svn_ls($this->fullRepoPath($repo), $revision);
+	}
+
+	public function log($repo, $startRev = SVN_REVISION_HEAD, $endRev = SVN_REVISION_INITIAL, $limit = 0) {
+		return @svn_log($this->fullRepoPath($repo), $startRev, $endRev, $limit);
+	}
 }
