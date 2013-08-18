@@ -70,4 +70,16 @@ class SvnComponent extends Component {
 	public function log($repo, $startRev = SVN_REVISION_HEAD, $endRev = SVN_REVISION_INITIAL, $limit = 0) {
 		return @svn_log($this->fullRepoPath($repo), $startRev, $endRev, $limit);
 	}
+
+	public function amountOfCommits($repo) {
+		return count($this->log($repo));
+	}
+
+	public function amountOfBranches() {
+		return count($this->ls('branches/'));
+	}
+
+	public function amountOfTags() {
+		return count($this->ls('tags/'));
+	}
 }
